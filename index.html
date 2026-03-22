@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马成五金 - 工业级紧固件产品与工艺画册</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --border: #e2e8f0;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 30px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .header h1 {
+            color: var(--primary);
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #64748b;
+            font-size: 16px;
+        }
+        
+        /* 分类区块样式 */
+        .category-section {
+            margin-bottom: 60px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--secondary);
+        }
+        .category-title {
+            font-size: 22px;
+            color: var(--primary);
+            margin-top: 0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .category-desc {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* 生产流程与交期面板样式 */
+        .process-flow {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .step {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 600;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .arrow {
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .lead-time {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px dashed #93c5fd;
+            padding: 6px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        /* --- 新增：包装配置横幅样式 --- */
+        .packaging-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .pack-item {
+            background: #f1f5f9;
+            border-left: 4px solid #10b981; /* 绿色标识安全感 */
+            padding: 15px 20px;
+            border-radius: 0 6px 6px 0;
+        }
+        .pack-item.outer { border-left-color: #f59e0b; }
+        .pack-item.shipping { border-left-color: #3b82f6; }
+        
+        .pack-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .pack-text {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        /* 图片网格 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .product-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border-color: #bfdbfe;
+        }
+        .img-box {
+            height: 200px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        .img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+        .info-box {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .info-box h4 {
+            margin: 0 0 10px 0;
+            font-size: 15px;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+        
+        /* 参数面板样式 */
+        .specs-panel {
+            background-color: #f8fafc;
+            border-left: 3px solid var(--secondary);
+            padding: 8px 12px;
+            margin-top: auto; 
+            margin-bottom: 10px;
+            border-radius: 0 4px 4px 0;
+        }
+        .specs-panel div {
+            font-size: 12px;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+        .specs-panel div:last-child {
+            margin-bottom: 0;
+        }
+        .specs-panel strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .tag-group {
+            margin-top: 5px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--secondary);
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .tag.material { background: #dcfce7; color: #166534; }
+        .tag.process { background: #fef3c7; color: #92400e; }
+        
+        @media (max-width: 768px) {
+            .lead-time { margin-left: 0; margin-top: 10px; width: 100%; box-sizing: border-box; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>马成五金 - 工业级紧固件产品与工艺画册</h1>
+        <p>Macheng Hardware - Fastener Specifications & Manufacturing Process</p>
+    </div>
+
+    <div class="category-section">
+        <h2 class="category-title">01. 精密组合钉系列 (SEMS Screws)</h2>
+        <div class="category-desc">
+            <strong>核心优势：</strong> 垫圈永久锁死不脱落。大幅提升储能机柜、电控箱流水线打螺丝效率，避免短路。
+        </div>
+        
+        <div class="process-flow">
+            <span class="step">线材改拔</span><span class="arrow">➔</span>
+            <span class="step">冷镦打头</span><span class="arrow">➔</span>
+            <span class="step">自动穿垫与搓牙</span><span class="arrow">➔</span>
+            <span class="step">连续炉热处理</span><span class="arrow">➔</span>
+            <span class="step">电镀与除氢</span><span class="arrow">➔</span>
+            <span class="step">CCD全检</span>
+            <div class="lead-time">⏱️ 交期: 标准件 10-15天 / 定制件 20-25天</div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="img-box"><img src="5_M3x8十字槽盘头组合螺丝(新).jpg" alt="M3x8 十字三合一"></div>
+                <div class="info-box">
+                    <h4>M3 十字盘头三合一组合钉</h4>
+                    <div class="specs-panel">
+                        <div><strong>螺纹规格:</strong> M3</div>
+                        <div><strong>螺纹长度:</strong> 8 mm</div>
+                        <div><strong>组合垫圈:</strong> 弹垫 + 平垫 (3-in-1)</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag">标准组装</span><span class="tag process">机械防松</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="21_M6x12 圆头内六角二合一螺钉.jpg" alt="M6x12 内六角二合一"></div>
+                <div class="info-box">
+                    <h4>M6 内六角圆头二合一组合钉</h4>
+                    <div class="specs-panel">
+                        <div><strong>螺纹规格:</strong> M6</div>
+                        <div><strong>螺纹长度:</strong> 12 mm</div>
+                        <div><strong>组合垫圈:</strong> 弹簧垫圈 (2-in-1)</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag">高扭矩承载</span><span class="tag process">冷镦成型</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="8_M4x6三合一十字不锈钢螺丝.png" alt="M4x6 不锈钢三合一"></div>
+                <div class="info-box">
+                    <h4>M4 不锈钢十字盘头三合一</h4>
+                    <div class="specs-panel">
+                        <div><strong>螺纹规格:</strong> M4</div>
+                        <div><strong>螺纹长度:</strong> 6 mm</div>
+                        <div><strong>材质基体:</strong> SUS304 不锈钢</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag material">SUS304防锈</span><span class="tag process">抗盐雾</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="10_M4x6二合一滑齿.png" alt="M4x6 二合一"></div>
+                <div class="info-box">
+                    <h4>M4 十字带齿防滑二合一</h4>
+                    <div class="specs-panel">
+                        <div><strong>螺纹规格:</strong> M4</div>
+                        <div><strong>防滑机制:</strong> 底部带滑齿 (Serrated)</div>
+                        <div><strong>组合垫圈:</strong> 菊花齿垫圈 (2-in-1)</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag">咬合防滑</span><span class="tag process">盘头十字</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <h2 class="category-title">02. CNC 隔离柱系列 (Hex Brass/Steel Standoffs)</h2>
+        <div class="category-desc">
+            <strong>核心优势：</strong> CNC/自动车床极致公差控制。完美适配 PCBA 多层主板悬空、SMT自动贴片。
+        </div>
+
+        <div class="process-flow">
+            <span class="step">优质棒材上机</span><span class="arrow">➔</span>
+            <span class="step">CNC车床精密车削</span><span class="arrow">➔</span>
+            <span class="step">钻盲孔/攻内牙</span><span class="arrow">➔</span>
+            <span class="step">超声波除油</span><span class="arrow">➔</span>
+            <span class="step">表面钝化</span><span class="arrow">➔</span>
+            <span class="step">全检包装</span>
+            <div class="lead-time">⏱️ 交期: 常规尺寸 14-15天 / 复杂非标 18-20天</div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="img-box"><img src="2_MHP-5K M3铜螺柱(81+6).png" alt="M3 加长铜柱"></div>
+                <div class="info-box">
+                    <h4>M3 加长单头六角铜柱</h4>
+                    <div class="specs-panel">
+                        <div><strong>规格:</strong> M3 (公母牙 M-F)</div>
+                        <div><strong>长度:</strong> 81 mm + 6 mm</div>
+                        <div><strong>材质:</strong> 高品质黄铜</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag material">超长定制</span><span class="tag process">高同心度</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="13_M4x20贴片铜螺母柱.jpg" alt="M4 SMT 贴片铜母"></div>
+                <div class="info-box">
+                    <h4>M4 SMT 贴片端子隔离柱</h4>
+                    <div class="specs-panel">
+                        <div><strong>规格:</strong> M4 (内螺纹)</div>
+                        <div><strong>高度:</strong> 20 mm</div>
+                        <div><strong>特性:</strong> 底部纯平可过回流焊</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag material">SMT专属</span><span class="tag process">平整端面</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="18_M4角柱（10+9.5+5）.jpg" alt="M4 异形角柱"></div>
+                <div class="info-box">
+                    <h4>M4 多段异形支撑角柱</h4>
+                    <div class="specs-panel">
+                        <div><strong>规格:</strong> M4 (内螺纹)</div>
+                        <div><strong>分段:</strong> 10 mm + 9.5 mm + 5 mm</div>
+                        <div><strong>结构:</strong> CNC 切削非标台阶</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag process">高阶CNC定制</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="14_M4(12+5)螺柱(镀蓝锌).jpg" alt="M4 钢制隔离柱"></div>
+                <div class="info-box">
+                    <h4>M4 高强碳钢单头隔离柱</h4>
+                    <div class="specs-panel">
+                        <div><strong>规格:</strong> M4 (公母牙 M-F)</div>
+                        <div><strong>长度:</strong> 12 mm + 5 mm</div>
+                        <div><strong>表面处理:</strong> 镀蓝锌 (Blue Zinc)</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag material">高硬支撑</span><span class="tag process">碳钢基体</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <h2 class="category-title">03. 高强自攻钉系列 (Self-Tapping Screws)</h2>
+        <div class="category-desc">
+            <strong>核心优势：</strong> 经渗碳热处理，表面硬度极高。专为新能源塑胶外壳、薄钣金件直攻设计，拒绝滑丝。
+        </div>
+
+        <div class="process-flow">
+            <span class="step">碳钢线材</span><span class="arrow">➔</span>
+            <span class="step">冷镦打头</span><span class="arrow">➔</span>
+            <span class="step">搓尖尾自攻牙</span><span class="arrow">➔</span>
+            <span class="step" style="background: #fef3c7; border-color: #f59e0b;">渗碳热处理 (表面高频硬化)</span><span class="arrow">➔</span>
+            <span class="step">环保电镀</span><span class="arrow">➔</span>
+            <span class="step">攻入测试</span>
+            <div class="lead-time">⏱️ 交期: 含渗碳整体周期 15-20天</div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="img-box"><img src="12_M3X8十字盘头尖尾自攻牙镀蓝锌加硬螺丝.png" alt="M3 尖尾自攻"></div>
+                <div class="info-box">
+                    <h4>M3 尖尾盘头加硬自攻钉</h4>
+                    <div class="specs-panel">
+                        <div><strong>规格:</strong> ST3 / 长度 8 mm</div>
+                        <div><strong>尾部形状:</strong> 尖尾 (Sharp Point)</div>
+                        <div><strong>特殊工艺:</strong> 渗碳加硬 (Hardened)</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag process">极高硬度</span><span class="tag">塑胶直攻</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="22_ST6.3X40外六角自攻不锈钢螺钉.jpg" alt="ST6.3 不锈钢自攻"></div>
+                <div class="info-box">
+                    <h4>ST6.3 外六角不锈钢自攻钉</h4>
+                    <div class="specs-panel">
+                        <div><strong>规格:</strong> ST6.3 / 长度 40 mm</div>
+                        <div><strong>头部槽型:</strong> 外六角 (Hex Head)</div>
+                        <div><strong>材质基体:</strong> 不锈钢</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag material">不锈钢</span><span class="tag">重型钣金适用</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <h2 class="category-title">04. 不锈钢与特种螺钉 (Stainless / Machine Screws)</h2>
+        <div class="category-desc">
+            <strong>核心优势：</strong> 沉头完美齐平安装，梅花带柱提供极致防拆保护。不锈钢材质提供超长户外防锈能力。
+        </div>
+
+        <div class="process-flow">
+            <span class="step">SUS304/316线材</span><span class="arrow">➔</span>
+            <span class="step">冷镦成型</span><span class="arrow">➔</span>
+            <span class="step">挤压搓牙</span><span class="arrow">➔</span>
+            <span class="step">高温超声波除油</span><span class="arrow">➔</span>
+            <span class="step" style="background: #dcfce7; border-color: #22c55e;">酸洗钝化处理 (富铬氧化膜)</span><span class="arrow">➔</span>
+            <span class="step">全检包装</span>
+            <div class="lead-time">⏱️ 交期: 无需电镀，极速交货 13-18天</div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="img-box"><img src="7_M4x6沉头梅花.jpg" alt="M4 沉头梅花"></div>
+                <div class="info-box">
+                    <h4>M4 沉头防盗梅花槽螺钉</h4>
+                    <div class="specs-panel">
+                        <div><strong>规格:</strong> M4 / 长度 6 mm</div>
+                        <div><strong>头部槽型:</strong> 沉头 / 梅花槽 (Torx)</div>
+                        <div><strong>表面处理:</strong> 发黑 (Black Oxide)</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag">防拆卸防盗</span><span class="tag process">表面齐平</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="3_十字槽沉头螺丝_M3x8_银色（镀镍）.png" alt="M3 镀镍沉头"></div>
+                <div class="info-box">
+                    <h4>M3 十字沉头机械螺丝 (镀镍)</h4>
+                    <div class="specs-panel">
+                        <div><strong>规格:</strong> M3 / 长度 8 mm</div>
+                        <div><strong>表面处理:</strong> 银色精美镀镍 (Nickel)</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag process">高亮外观</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="4_十字槽沉头螺丝_M3x6_黑色(镀锌).png" alt="M3 黑锌沉头"></div>
+                <div class="info-box">
+                    <h4>M3 十字沉头机械螺丝 (黑锌)</h4>
+                    <div class="specs-panel">
+                        <div><strong>规格:</strong> M3 / 长度 6 mm</div>
+                        <div><strong>表面处理:</strong> 环保黑锌 (Black Zinc)</div>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag process">环保电镀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <h2 class="category-title">05. 大型结构件与配套 (Heavy Duty & Accessories)</h2>
+        <div class="category-desc">
+            <strong>核心服务：</strong> 提供从电芯深层堆叠穿透，到户用储能墙体壁挂的一站式 B2B 采购解决方案 (BOM Kitting)。
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="img-box"><img src="30_加长内六角_圆柱头螺杆_M5x140_8.8级镀锌.jpg" alt="M5 加长螺杆"></div>
+                <div class="info-box">
+                    <h4>M5x140 加长内六角高强螺栓</h4>
+                    <div class="specs-panel">
+                        <div><strong>长跨度:</strong> 140 mm (超长定制)</div>
+                        <div><strong>强度:</strong> 8.8 级高强抗拉</div>
+                        <div><strong>场景:</strong> 电池包电芯堆叠固定</div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="29_M10x90爆炸螺钉(不锈钢).jpg" alt="M10 爆炸螺丝"></div>
+                <div class="info-box">
+                    <h4>M10 重型不锈钢膨胀螺栓</h4>
+                    <div class="specs-panel">
+                        <div><strong>套管长:</strong> 90 mm</div>
+                        <div><strong>材质:</strong> 不锈钢防雨防锈</div>
+                        <div><strong>场景:</strong> 户外机柜壁挂承重</div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="1_M4法兰螺母.jpg" alt="M4 法兰螺母"></div>
+                <div class="info-box">
+                    <h4>M4 六角防滑法兰螺母</h4>
+                    <div class="specs-panel">
+                        <div><strong>防松机制:</strong> 底部带防滑压花齿</div>
+                        <div><strong>场景:</strong> 逆变器外壳底座锁紧</div>
+                    </div>
+                </div>
+            </div>
+             <div class="product-card">
+                <div class="img-box"><img src="31_抽芯铆钉M3x6_铝制.jpg" alt="M3 抽芯铆钉"></div>
+                <div class="info-box">
+                    <h4>M3 铝制单向抽芯铆钉</h4>
+                    <div class="specs-panel">
+                        <div><strong>材质:</strong> 铝制 (质轻、防锈)</div>
+                        <div><strong>场景:</strong> 机箱钣金单面快速铆接</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <h2 class="category-title">06. 工业级包装规范与全检体系 (Industrial Packaging & QC)</h2>
+        <div class="category-desc">
+            <strong>核心优势：</strong> 规范的工业包装系统与 CCD 全自动筛选，确保长途海运防潮防锈，到达客户产线零缺陷率 (0 PPM)。
+        </div>
+
+        <div class="packaging-banner">
+            <div class="pack-item inner">
+                <div class="pack-title">📦 1. 内包装 (Inner Packing)</div>
+                <div class="pack-text">加厚 PE 自封袋或定制小白盒。按规格精准分装，内置 <strong>VCI 气相防锈纸</strong>。<br><em>*烤漆/铜件采用防静电托盘或网套独立隔离。</em></div>
+            </div>
+            <div class="pack-item outer">
+                <div class="pack-title">📦 2. 外包装 (Outer Carton)</div>
+                <div class="pack-text"><strong>工业级加强型五层瓦楞纸箱</strong>。外侧规范张贴英文标签（包含中英文规格、防腐等级、数量条码及 RoHS 环保标识）。</div>
+            </div>
+            <div class="pack-item shipping">
+                <div class="pack-title">🚢 3. 运输包装 (Shipping Pallet)</div>
+                <div class="pack-text">出口标准<strong>免熏蒸木托盘</strong>。外层采用加厚防潮缠绕膜包裹，加配高强度打包带井字形加固，完美适配港口叉车作业。</div>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="img-box"><img src="2_3.jpg" alt="规范化仓储"></div>
+                <div class="info-box">
+                    <h4>规范化仓储与分装</h4>
+                    <div class="specs-panel">
+                        <div><strong>防护:</strong> 独立防尘防潮封存</div>
+                        <div><strong>管理:</strong> 清晰的批次与货架管理</div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="2_2.jpg" alt="大宗出货包装"></div>
+                <div class="info-box">
+                    <h4>五层瓦楞纸箱出货区</h4>
+                    <div class="specs-panel">
+                        <div><strong>外箱:</strong> 工业级高强抗压瓦楞纸</div>
+                        <div><strong>标识:</strong> 英文参数与条码规范张贴</div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="2_1.jpg" alt="自动化生产车间"></div>
+                <div class="info-box">
+                    <h4>全自动化冷镦车间</h4>
+                    <div class="specs-panel">
+                        <div><strong>产能:</strong> 满足大型项目海量交付</div>
+                        <div><strong>品控:</strong> 标准化 5S 现场管理</div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="img-box"><img src="DSC00650.jpg" alt="精密加工特写"></div>
+                <div class="info-box">
+                    <h4>高速加工机组集群</h4>
+                    <div class="specs-panel">
+                        <div><strong>设备:</strong> 高速精密搓牙打头设备</div>
+                        <div><strong>精度:</strong> 极致公差与无毛刺控制</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
